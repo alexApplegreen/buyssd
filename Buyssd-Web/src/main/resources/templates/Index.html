@@ -1,11 +1,18 @@
 <html>
-    <head>
-
-    </head>
+<head>
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/howler/2.1.1/howler.js"></script>
+</head>
     <body>
         <h1>Bro your loading time sucks!</h1>
-        <h2>regards</h2>
+        <h1>Click me, Nerd!</h1>
         <img src="Fressen.jpeg">
-        <EMBED src="mukke.mp3" autostart=true loop=true hidden=true>
+        <audio id="audio" src="mukke.mp3" loop></audio>
+
+        <script>
+            document.body.addEventListener('mousedown', fn, true);
+            function fn() {
+                document.getElementById("audio").play();
+            }
+        </script>
     </body>
 </html>
