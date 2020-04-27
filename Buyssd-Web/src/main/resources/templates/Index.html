@@ -1,16 +1,45 @@
 <html>
-<head>
-</head>
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+              integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+              crossorigin="anonymous">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
     <body>
         <h1>Bro your loading time sucks!</h1>
-        <h1>Click me, Nerd!</h1>
-        <img src="Fressen.jpeg">
+
+        <img src="Fressen.jpeg" width="500" height="600">
+
+        <button id ="button" class="pure-button">Partymode!</button>
         <audio id="audio" src="mukke.mp3" loop></audio>
 
         <script>
-            document.body.addEventListener('mousedown', fn, true);
-            function fn() {
+            let colors = ["red", "blue", "green", "yellow"];
+            let URL = "/notify";
+
+            document.getElementById("button").addEventListener('mousedown', party, true);
+
+            function party() {
+                axios.put(URL);
+                console.log("notifying backend");
+                playaudio();
+                changeColor();
+            }
+
+            async function changeColor() {
+                for (;;) {
+                    var random = Math.floor(Math.random() * colors.length);
+                    document.body.style.backgroundColor = colors[random];
+                    await sleep(100);
+                }
+            }
+
+            async function playaudio() {
                 document.getElementById("audio").play();
+            }
+
+            async function sleep(msec) {
+                return new Promise(resolve => setTimeout(resolve, msec));
             }
         </script>
     </body>
